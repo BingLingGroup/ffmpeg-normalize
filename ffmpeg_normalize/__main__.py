@@ -2,19 +2,34 @@ import argparse
 import textwrap
 import logging
 import os
+import multiprocessing
+import sys
 import shlex
 import json
+from ffmpeg_normalize._version import __version__
+from ffmpeg_normalize._ffmpeg_normalize import FFmpegNormalize, NORMALIZATION_TYPES
+from ffmpeg_normalize._errors import FFmpegNormalizeError
+from ffmpeg_normalize._logger import setup_custom_logger
+
 
 try:
     from json.decoder import JSONDecodeError
 except ImportError:
     JSONDecodeError = ValueError
 
-from ._version import __version__
-from ._ffmpeg_normalize import FFmpegNormalize, NORMALIZATION_TYPES
-from ._errors import FFmpegNormalizeError
-from ._logger import setup_custom_logger
+if __package__ is None and not hasattr(sys, "frozen"):
+    # direct call of __main__.py
+    # Reference: https://github.com/rg3/youtube-dl/blob/master/youtube_dl/__main__.py
+    import os.path
+
+    PATH = os.path.realpath(os.path.abspath(__file__))
+    sys.path.insert(0, os.path.dirname(os.path.dirname(PATH)))
+
+if sys.platform.startswith('win'):
+    multiprocessing.freeze_support()
+
 logger = setup_custom_logger('ffmpeg_normalize')
+
 
 def create_parser():
     parser = argparse.ArgumentParser(
@@ -392,7 +407,7 @@ def main():
             if not os.path.isdir(cli_args.output_folder) and not cli_args.dry_run:
                 logger.warning(
                     "Output directory '{}' does not exist, will create"
-                    .format(cli_args.output_folder)
+                        .format(cli_args.output_folder)
                 )
                 os.makedirs(cli_args.output_folder)
 

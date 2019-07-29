@@ -51,3 +51,6 @@ docs/_build
 
 # Output folder
 normalized
+
+# Nuitka build
+.build_and_dist
