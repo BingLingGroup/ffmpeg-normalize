@@ -143,6 +143,23 @@ def which(program):
                 logger.debug("found executable in path: " + str(exe_file))
                 return exe_file
 
+        if getattr(sys, 'frozen', False):
+            # If the application is run as a bundle, the pyInstaller bootloader
+            # extends the sys module by a flag frozen=True and sets the app
+            # path into variable executable'.
+            app_path = os.path.dirname(sys.executable)
+        else:
+            app_path = os.path.dirname(__file__)
+
+        # if program located at app's directory
+        exe_file = os.path.join(app_path, os.path.basename(program))
+        if is_exe(exe_file):
+            return exe_file
+        # if program located at current directory
+        exe_file = os.path.join(os.getcwd(), os.path.basename(program))
+        if is_exe(exe_file):
+            return exe_file
+
     return None
 
 def dict_to_filter_opts(opts):
