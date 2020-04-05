@@ -1,4 +1,4 @@
-from ._ffmpeg_normalize import FFmpegNormalize
-from ._media_file import MediaFile
-from ._version import __version__
+from ffmpeg_normalize._ffmpeg_normalize import FFmpegNormalize
+from ffmpeg_normalize._media_file import MediaFile
+from ffmpeg_normalize._version import __version__
 

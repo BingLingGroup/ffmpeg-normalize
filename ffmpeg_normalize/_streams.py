@@ -2,9 +2,9 @@ import os
 import re
 import json
 
-from ._errors import FFmpegNormalizeError
-from ._cmd_utils import NUL, CommandRunner, dict_to_filter_opts
-from ._logger import setup_custom_logger
+from ffmpeg_normalize._errors import FFmpegNormalizeError
+from ffmpeg_normalize._cmd_utils import NUL, CommandRunner, dict_to_filter_opts
+from ffmpeg_normalize._logger import setup_custom_logger
 logger = setup_custom_logger('ffmpeg_normalize')
 
 class MediaStream(object):

@@ -1,6 +1,6 @@
 import sys
 import logging
-from ._logger import setup_custom_logger
+from ffmpeg_normalize._logger import setup_custom_logger
 
 logger = setup_custom_logger('ffmpeg_normalize')
 

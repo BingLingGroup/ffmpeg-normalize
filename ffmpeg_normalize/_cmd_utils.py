@@ -5,8 +5,8 @@ import subprocess
 from platform import system as _current_os
 import re
 
-from ._errors import FFmpegNormalizeError
-from ._logger import setup_custom_logger
+from ffmpeg_normalize._errors import FFmpegNormalizeError
+from ffmpeg_normalize._logger import setup_custom_logger
 logger = setup_custom_logger('ffmpeg_normalize')
 
 CUR_OS = _current_os()

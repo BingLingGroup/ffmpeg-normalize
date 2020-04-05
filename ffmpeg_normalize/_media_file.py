@@ -5,10 +5,10 @@ import shutil
 import json
 from tqdm import tqdm
 
-from ._streams import AudioStream, VideoStream, SubtitleStream
-from ._errors import FFmpegNormalizeError
-from ._cmd_utils import NUL, CommandRunner, DUR_REGEX, to_ms
-from ._logger import setup_custom_logger
+from ffmpeg_normalize._streams import AudioStream, VideoStream, SubtitleStream
+from ffmpeg_normalize._errors import FFmpegNormalizeError
+from ffmpeg_normalize._cmd_utils import NUL, CommandRunner, DUR_REGEX, to_ms
+from ffmpeg_normalize._logger import setup_custom_logger
 logger = setup_custom_logger('ffmpeg_normalize')
 
 

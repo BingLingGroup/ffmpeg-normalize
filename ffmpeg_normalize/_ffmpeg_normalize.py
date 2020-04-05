@@ -2,10 +2,10 @@ import os
 from numbers import Number
 from tqdm import tqdm
 
-from ._cmd_utils import get_ffmpeg_exe, ffmpeg_has_loudnorm
-from ._media_file import MediaFile
-from ._errors import FFmpegNormalizeError
-from ._logger import setup_custom_logger
+from ffmpeg_normalize._cmd_utils import get_ffmpeg_exe, ffmpeg_has_loudnorm
+from ffmpeg_normalize._media_file import MediaFile
+from ffmpeg_normalize._errors import FFmpegNormalizeError
+from ffmpeg_normalize._logger import setup_custom_logger
 
 logger = setup_custom_logger('ffmpeg_normalize')
 
